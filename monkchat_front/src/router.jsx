@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import App from "./pages/app/App.jsx";
+import App from "./pages/app";
 import Registrar from "./pages/registrar";
 
 export default function Navegation() {
