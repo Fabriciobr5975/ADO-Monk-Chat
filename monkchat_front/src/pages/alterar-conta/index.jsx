@@ -2,7 +2,7 @@ import "./index.scss";
 import BarraLogo from "../../components/barra-logo";
 import { Link } from "react-router-dom";
 
-function App() {
+export default function AlterarConta() {
   return (
     <div className="alterar-app">
       <BarraLogo />
@@ -33,4 +33,3 @@ function App() {
   );
 }
 
-export default App;
