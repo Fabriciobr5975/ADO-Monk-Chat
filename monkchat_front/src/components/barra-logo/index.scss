@@ -1,0 +1,33 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+.comp-barra-logo {
+  width: 850px;
+  height: 870px;
+  border-radius: 3px;
+  background: #583bbf;
+
+  display: flex;
+  flex-direction: column;
+
+  .logo-monk {
+    align-items: center;
+    width: 128px;
+    height: 99px;
+    top: 321px;
+    left: 296px;
+    margin-left: 300px;
+    margin-top: 250px;
+  }
+
+  .logo-txt {
+    font-family: "Montserrat", sans-serif;
+    color: white;
+    font-family: Montserrat;
+    font-weight: 700px;
+    font-size: 36px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    margin-left: 260px;
+    margin-top: 10px;
+  }
+}

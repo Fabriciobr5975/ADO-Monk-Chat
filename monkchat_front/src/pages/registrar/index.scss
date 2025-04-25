@@ -1,0 +1,74 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+.registro-app {
+  width: 1440;
+  height: 804;
+  top: 2244px;
+  display: flex;
+  flex-direction: row;
+
+  .registrar {
+    display: flex;
+    flex-direction: column;
+    margin-left: 280px;
+    margin-top: 300px;
+    .titulo {
+      font-family: "Montserrat", sans-serif;
+
+      font-weight: bolder;
+      font-size: 40px;
+      line-height: 100%;
+      letter-spacing: 0%;
+      margin-bottom: 25px;
+    }
+
+    .info {
+      display: flex;
+      flex-direction: row;
+      font-family: "Montserrat", sans-serif;
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 100%;
+      letter-spacing: 0%;
+      text-align: right;
+
+      margin-left: 0px;
+      margin-top: 10px;
+      margin-bottom: 5px;
+    }
+
+    .input {
+      width: 187px;
+      height: 34px;
+      top: 379px;
+      left: 1039px;
+      border-radius: 5px;
+      border-width: 1px;
+    }
+
+    .btn-criar {
+      margin-top: 15px;
+      width: 102px;
+      height: 33px;
+      top: 475px;
+      left: 1124px;
+      border-radius: 20px;
+      background: #50b4bf;
+      color: white;
+
+      font-family: "Montserrat", sans-serif;
+      font-weight: bolder;
+      font-size: 16px;
+      line-height: 100%;
+      letter-spacing: 0%;
+      text-align: center;
+
+      margin-left: 35px;
+    }
+
+    .possui-conta {
+      margin-top: 55px;
+      width: 190px;
+    }
+  }
+}
