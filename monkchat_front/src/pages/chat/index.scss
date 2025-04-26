@@ -1,0 +1,186 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+main {
+    background: #583BBF;
+    width: 100%;
+    font-family: Montserrat;
+    color: white;
+
+    header {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 15% 65% 20%;
+        align-items: center;
+        padding-top: 2rem;
+
+
+        .logo {
+            width: 100%;
+            justify-items: center;
+
+            .logo_monk {
+                display: flex;
+                width: 85px;
+                height: 69px;
+                gap: 1rem;
+
+            }
+
+            .logo_monk img {
+                width: 100%;
+                height: auto;
+            }
+
+        }
+
+        .conta {
+            justify-items: center;
+        }
+
+        .logo-txt {
+            font-weight: 700;
+            font-size: 36px;
+            line-height: 100%;
+            letter-spacing: 0%;
+
+        }
+
+
+    }
+
+    .conteudo {
+        height: auto;
+        justify-items: center;
+        padding: 4rem 2rem;
+
+
+        .container {
+            width: 90%;
+            border-radius: 15px;
+            height: 580px;
+            display: grid;
+            grid-template-columns: 35% 65%;
+
+
+            .input {
+                background: rgba(218, 166, 50, 1);
+                border-top-left-radius: 15px;
+                border-bottom-left-radius: 15px;
+                justify-items: center;
+                align-content: center;
+                color: #FFF;
+                font-family: Montserrat;
+                font-weight: 700;
+                font-size: 24px;
+                line-height: 100%;
+                letter-spacing: 0%;
+
+
+
+                .dados {
+                    width: 75%;
+                    height: 30%;
+                    display: grid;
+                    grid-auto-rows: max-content;
+                    row-gap: 0.75rem;
+
+
+                    .insercao-dados {
+                        display: grid;
+                        grid-template-columns: 30% 70%;
+                        justify-items: end;
+                        padding-right: 1rem;
+                        gap: 1rem;
+                        align-items: center;
+                    }
+
+
+                }
+
+                .mensagem {
+                    width: 75%;
+                    height: 50%;
+                    display: grid;
+                    grid-auto-rows: max-content;
+                    row-gap: 1rem;
+                    padding-top: 1rem;
+
+
+                    textarea {
+                        width: 100%;
+                        border-radius: 15px;
+                        height: 180px;
+                    }
+
+                    input[type=button] {
+                        justify-self: end;
+                        width: 120px;
+                    }
+                }
+
+                input[type=button] {
+                    background-color: rgba(191, 139, 23, 1);
+                    width: 90px;
+                    height: 33px;
+                    border-radius: 20px;
+                    border: none;
+                    color: #FFF;
+                    font-weight: bold;
+                    font-size: medium;
+                }
+
+                input[type=text] {
+                    width: 90%;
+                    border-radius: 5px;
+                    border: 1px solid rgba(0, 0, 0, 0.50);
+                    background: #FFF;
+                    height: 30px;
+                    padding-left: 1rem;
+                }
+            }
+
+            .chat {
+                background: rgba(74, 74, 65, 1);
+                border-top-right-radius: 15px;
+                border-bottom-right-radius: 15px;
+
+                .atualizar {
+                    height: 10%;
+                    width: 98%;
+                    justify-items: end;
+                    align-content: center;
+                }
+
+                .atualizar img {
+                    width: 100%;
+                    height: auto;
+                }
+
+                .areadochat {
+                    width: 99%;
+                    height: 85%;
+                    display: flex;
+                    flex-direction: column;
+                    row-gap: 0.5rem;
+                }
+
+                .mensagemnochat {
+                    display: grid;
+                    grid-template-columns: 80% 20%;
+                    padding-left: 2rem;
+                }
+
+                .edit-remove {
+                    justify-items: center;
+                    padding-right: 0.25rem;
+                    justify-self: end;
+                    padding-right: 1rem;
+                }
+
+                
+            }
+
+        }
+    }
+
+}
