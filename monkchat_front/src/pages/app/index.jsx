@@ -10,21 +10,20 @@ export default function Login() {
   const navigate = useNavigate();
 
   async function buscarUsuario() {
-    try {
-      let resp = await axios.get(
-        `http://localhost:5001/usuario/dados?email=${email}&senha=${senha}`
-      );
+    let resp = await axios.get(
+      `http://localhost:5001/usuario/dados?email=${email}&senha=${senha}`
+    );
 
-      const UsuarioValido = resp.data.find(
-        (usuario) => usuario.DS_EMAIL === email && usuario.DS_SENHA === senha
-      );
+    const UsuarioValido = resp.data.find(
+      (usuario) => usuario.DS_EMAIL === email && usuario.DS_SENHA === senha
+    );
 
-      if (UsuarioValido) {
-        navigate("/alterar");
-      } else {
-        alert("Usuário ou senha inválidos");
-      }
-    } catch (err) {}
+    if (UsuarioValido) {
+      navigate("/alterar", { state: { id: UsuarioValido.ID_USUARIO, email: email, senha: senha } });
+    } else {
+      alert("Usuário ou senha inválidos");
+    }
+    
   }
 
   return (
