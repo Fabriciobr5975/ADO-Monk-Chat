@@ -110,6 +110,7 @@ main {
                         width: 100%;
                         border-radius: 15px;
                         height: 180px;
+                        padding: 0.5rem 1rem;
                     }
 
                     input[type=button] {
@@ -168,6 +169,7 @@ main {
                     display: grid;
                     grid-template-columns: 80% 20%;
                     padding-left: 2rem;
+                    
                 }
 
                 .edit-remove {
@@ -175,6 +177,9 @@ main {
                     padding-right: 0.25rem;
                     justify-self: end;
                     padding-right: 1rem;
+                    img{
+                        margin-right: 10px;
+                    }
                 }
 
                 
