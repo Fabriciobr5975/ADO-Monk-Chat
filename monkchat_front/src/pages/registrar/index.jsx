@@ -22,7 +22,7 @@ export default function Registrar() {
 
     limpar();
     alert("Registro concluido!");
-    navigate("/");
+    navigate("/chat");
   }
 
   function getCurrentDate() {

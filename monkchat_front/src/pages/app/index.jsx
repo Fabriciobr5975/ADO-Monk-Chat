@@ -19,11 +19,11 @@ export default function Login() {
     );
 
     if (UsuarioValido) {
-      navigate("/alterar", { state: { id: UsuarioValido.ID_USUARIO, email: email, senha: senha } });
+      sessionStorage.setItem("cliente", JSON.stringify(UsuarioValido));
+      navigate("/chat");
     } else {
       alert("Usuário ou senha inválidos");
     }
-    
   }
 
   return (

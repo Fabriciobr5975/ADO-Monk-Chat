@@ -1,27 +1,29 @@
 import "./index.scss";
 import BarraLogo from "../../components/barra-logo";
-import { useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 
 export default function AlterarConta() {
-  const location = useLocation();
-  const { id, email, senha } = location.state || {};
-  const [novaSenha, setNovaSenha] = useState(senha);
+  const usuario = JSON.parse(sessionStorage.getItem("cliente")) || {};
+  const navigate = useNavigate();
+  
+  const [novaSenha, setNovaSenha] = useState(usuario.senha ?? "");
   const [nick, setNick] = useState("");
 
   async function alterarUsuario() {
     const body = {
       nm_usuario: nick,
-      ds_email: email,
+      ds_email: usuario.DS_EMAIL,
       ds_senha: novaSenha,
     };
 
-    let resp = await axios.put(`http://localhost:5001/usuario/${id}`, body);
+    let resp = await axios.put(`http://localhost:5001/usuario/${usuario.ID_USUARIO}`, body);
 
     if (resp.data.resposta >= 1) {
       alert(`O usuário foi alterado com sucesso`);
-    
+      navigate("/chat");
+
     } else {
       alert(`O usuário não foi alterado`)
     }
@@ -37,7 +39,7 @@ export default function AlterarConta() {
         <label className="info">Email</label>
         <input
           type="email"
-          value={email}
+          value={usuario.DS_EMAIL}
           placeholder="Insira seu e-mail"
           className="input"
           readOnly
@@ -62,7 +64,7 @@ export default function AlterarConta() {
           onChange={(e) => setNick(e.target.value)}
         />
 
-        <button className="btn-alterar" onClick={alterarUsuario}>
+        <button className="btn-alterar" onClick={() => alterarUsuario()}>
           Alterar
         </button>
       </div>
