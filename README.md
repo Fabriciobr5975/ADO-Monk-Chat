@@ -3,7 +3,6 @@
 
 > Esse projeto não está completo e ainda receberá algumas atualizações 😉. A versão mobile não será construida, pois essa atividade foi realizada para um matéria que tem foco na construção de aplicações WEB
 
-
 ## Objetivo 🎯 
 <p align="justify">Este projeto full stack teve como proposito a construção de um site com crud simples baseado em um chat on-line, onde as pessoas podem ser comunicar através com outras pessoas, usando um chat simples</p>
 
@@ -19,6 +18,24 @@ Usuário:
   - Remover mensagens
 
 > As salas são globais, então todos os usuários podem entrar na sala e enviar mensagens
+
+## Como rodar o projeto
+
+> Para rodar esse projeto você terá que ter o React, o Node e o MySQL instalado
+
+Primeiro crie o banco de dados e suas tabelas, o arquivo sql está dentro de back-end. Depois de os seguintes comandos
+
+```bash
+cd Projeto/back-end/monk-chat
+npm i
+npm start
+
+cd Projeto/front-end/monk-chat
+npm i
+npm start
+````
+
+Agora a aplicação está funcionando e você pode testá-la 😊
 
 ## Ferramentas e Tecnologias Usadas ⚒️
 <div align="center" > 
