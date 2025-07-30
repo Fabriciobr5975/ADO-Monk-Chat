@@ -5,19 +5,21 @@ import atualizar from "../../assets/images/botao-atualizar.svg";
 import edit from "../../assets/images/edit.svg";
 import remove from "../../assets/images/remove.svg";
 import axios from "axios";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function Chat() {
   const usuario = JSON.parse(sessionStorage.getItem("cliente")) || {};
+  const informacoesSala = JSON.parse(sessionStorage.getItem("sala")) || {
+    ID_SALA: 0,
+  };
+  const [numeroSala, setNumeroSala] = useState(informacoesSala.ID_SALA || 0);
 
   const navigate = useNavigate();
-  const [sala, setSala] = useState("");
+  const [sala, setSala] = useState(informacoesSala.NM_SALA || "");
   const [dest, setDest] = useState(0);
   const [listaMensagem, setListaMensagem] = useState([]);
-  const [mensagemPadrao, setMensagemPadrao] = useState("");
-
-  const [numeroSala, setNumeroSala] = useState(0);
+  const [mensagemPadrao] = useState("");
 
   const [mensagem, setMensagem] = useState([
     {
@@ -30,8 +32,13 @@ export default function Chat() {
     },
   ]);
 
-  async function Deletar(idMensagem) {
+  async function Deletar(idMensagem, idUsuarioEnvio) {
     try {
+      if (idUsuarioEnvio !== usuario.ID_USUARIO) {
+        alert("Você não pode remover mensagens de outros usuários.");
+        return;
+      }
+
       const url = `http://localhost:5001/mensagem/${idMensagem}`;
       await axios.delete(url);
 
@@ -60,6 +67,16 @@ export default function Chat() {
 
   async function Alterar() {
     try {
+      if (mensagem.id_mensagem === 0) {
+        alert("Selecione uma mensagem para alterar.");
+        return;
+      }
+
+      if (mensagem.id_usuario_envio !== usuario.ID_USUARIO) {
+        alert("Você não pode alterar mensagens de outros usuários.");
+        return;
+      }
+
       const url = `http://localhost:5001/mensagem/${mensagem.id_mensagem}`;
       await axios.put(url, mensagem);
 
@@ -95,6 +112,11 @@ export default function Chat() {
         dt_mensagem: new Date(),
       });
 
+      if (mensagem.ds_mensagem.trim() === "") {
+        alert("A mensagem não pode estar vazia.");
+        return;
+      }
+
       const url = "http://localhost:5001/mensagem";
       await axios.post(url, mensagem);
       alert("Mensagem enviada com sucesso!");
@@ -123,11 +145,11 @@ export default function Chat() {
 
   async function Entrar() {
     try {
-      await axios
+      const resp = await axios
         .get(`http://localhost:5001/sala/${sala}`)
         .then(alert("Entrou na sala"));
 
-        setNumeroSala(sala);
+      sessionStorage.setItem("sala", JSON.stringify(resp.data[0]));
     } catch (error) {
       alert(error.response?.data?.erro ?? "Erro ao entrar na sala");
     }
@@ -173,7 +195,7 @@ export default function Chat() {
               </div>
               <div className="insercao-dados">
                 Nick:
-                <input type="text" value={usuario.nm_usuario} readOnly />
+                <input type="text" value={usuario.NM_USUARIO} readOnly />
               </div>
               <div className="insercao-dados">
                 Para:
@@ -183,7 +205,7 @@ export default function Chat() {
                   </option>
 
                   {listaMensagem.map(
-                    (item, index) =>
+                    (item) =>
                       item.DESTINATARIO !== item.NM_USUARIO && (
                         <option
                           value={item.ID_USUARIO_PARA}
@@ -246,26 +268,32 @@ export default function Chat() {
                     : {item.DS_MENSAGEM}
                   </div>
                   <div className="edit-remove">
-                    <img
-                      src={edit}
-                      alt=""
-                      onClick={() =>
-                        setMensagem({
-                          ...mensagem,
-                          id_mensagem: item.ID_MENSAGEM,
-                          id_usuario_envio: item.ID_USUARIO_ENVIO,
-                          id_usuario_para: item.ID_USUARIO_PARA,
-                          id_sala: item.ID_SALA,
-                          ds_mensagem: item.DS_MENSAGEM,
-                          dt_mensagem: new Date(),
-                        })
-                      }
-                    />
-                    <img
-                      src={remove}
-                      alt=""
-                      onClick={() => Deletar(item.ID_MENSAGEM)}
-                    />
+                    {usuario.ID_USUARIO === item.ID_USUARIO_ENVIO && (
+                      <img
+                        src={edit}
+                        alt=""
+                        onClick={() => {
+                          setMensagem({
+                            ...mensagem,
+                            id_mensagem: item.ID_MENSAGEM,
+                            id_usuario_envio: item.ID_USUARIO_ENVIO,
+                            id_usuario_para: item.ID_USUARIO_PARA,
+                            id_sala: item.ID_SALA,
+                            ds_mensagem: item.DS_MENSAGEM,
+                            dt_mensagem: new Date(),
+                          });
+                        }}
+                      />
+                    )}
+                    {usuario.ID_USUARIO === item.ID_USUARIO_ENVIO && (
+                      <img
+                        src={remove}
+                        alt=""
+                        onClick={() =>
+                          Deletar(item.ID_MENSAGEM, item.ID_USUARIO_ENVIO)
+                        }
+                      />
+                    )}
                   </div>
                 </div>
               ))}

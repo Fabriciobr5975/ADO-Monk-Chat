@@ -8,8 +8,6 @@ export default function AlterarConta() {
   const usuario = JSON.parse(sessionStorage.getItem("cliente")) || {};
   const navigate = useNavigate();
 
-  console.log(usuario)
-
   const [novaSenha, setNovaSenha] = useState(usuario.senha ?? "");
   const [nick, setNick] = useState("");
 
@@ -45,7 +43,7 @@ export default function AlterarConta() {
           <label className="info">Email</label>
           <input
             type="email"
-            value={usuario.ds_email}
+            value={usuario.DS_EMAIL}
             placeholder="Insira seu e-mail"
             className="input"
             readOnly
