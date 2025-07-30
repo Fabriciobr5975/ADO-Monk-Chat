@@ -15,56 +15,14 @@ export default function Registrar() {
       nm_usuario: nick,
       ds_email: email,
       ds_senha: senha,
-      dt_criacao: getCurrentDate(),
+      dt_criacao: new Date(),
     };
 
     axios.post("http://localhost:5001/usuario", body);
-
+    sessionStorage.setItem("cliente", JSON.stringify(body));
     limpar();
     alert("Registro concluido!");
     navigate("/chat");
-  }
-
-  function getCurrentDate() {
-    var nowDate = new Date();
-    var month =
-      (nowDate.getMonth() + 1).toString().length === 1
-        ? "0" + (nowDate.getMonth() + 1)
-        : nowDate.getMonth() + 1;
-
-    var day =
-      nowDate.getDate().toString().length === 1
-        ? "0" + nowDate.getDate()
-        : +nowDate.getDate();
-
-    var hour =
-      nowDate.getHours().toString().length === 1
-        ? "0" + nowDate.getHours()
-        : +nowDate.getHours();
-
-    var minute =
-      nowDate.getMinutes().toString().length === 1
-        ? "0" + nowDate.getMinutes()
-        : +nowDate.getMinutes();
-
-    var seconds =
-      nowDate.getSeconds().toString().length === 1
-        ? "0" + nowDate.getSeconds()
-        : +nowDate.getSeconds();
-
-    return (
-      nowDate.getFullYear() +
-      "-" +
-      month +
-      "-" +
-      day +
-      " " +
-      hour +
-      ":" +
-      minute +
-      ":" +
-      seconds
-    );
   }
 
   function limpar() {
@@ -78,39 +36,49 @@ export default function Registrar() {
       <BarraLogo />
 
       <div className="registrar">
-        <label className="titulo">Crie sua conta</label>
+        <h3 className="titulo">Crie sua conta</h3>
 
-        <label className="info">Nick</label>
-        <input
-          type="text"
-          placeholder="Insira seu nickname"
-          className="input"
-          onChange={(e) => setNick(e.target.value)}
-        />
+        <div className="campos-entrada">
+          <label className="info">Nick</label>
+          <input
+            type="text"
+            placeholder="Insira seu nickname"
+            className="input"
+            onChange={(e) => setNick(e.target.value)}
+          />
+        </div>
 
-        <label className="info">Email</label>
-        <input
-          type="email"
-          placeholder="Insira seu e-mail"
-          className="input"
-          onChange={(e) => setEmail(e.target.value)}
-        />
+        <div className="campos-entrada">
+          <label className="info">Email</label>
+          <input
+            type="email"
+            placeholder="Insira seu e-mail"
+            className="input"
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </div>
 
-        <label className="info">Senha</label>
-        <input
-          type="password"
-          placeholder="Insira seu e-mail"
-          className="input"
-          onChange={(e) => setSenha(e.target.value)}
-        />
+        <div className="campos-entrada">
+          <label className="info">Senha</label>
+          <input
+            type="password"
+            placeholder="Insira sua senha"
+            className="input"
+            onChange={(e) => setSenha(e.target.value)}
+          />
+        </div>
 
         <button className="btn-criar" onClick={registrar}>
           Criar
         </button>
 
-        <label className="possui-conta">
-          Já possui uma conta? Faça seu login clicando<Link to="/"> aqui.</Link>{" "}
-        </label>
+        <div className="possui-conta">
+          <span>Já possui uma conta?</span>
+          <span>
+            Faça seu login clicando
+            <Link to="/"> aqui.</Link>
+          </span>
+        </div>
       </div>
     </div>
   );

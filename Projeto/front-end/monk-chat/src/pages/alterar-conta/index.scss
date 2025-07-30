@@ -1,53 +1,58 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
 .alterar-app {
-  width: 1440;
-  height: 804;
-  top: 2244px;
+  width: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: row;
 
   .alterar {
     display: flex;
     flex-direction: column;
-    margin-left: 280px;
-    margin-top: 300px;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+
     .titulo {
       font-family: "Montserrat", sans-serif;
-
       font-weight: bolder;
       font-size: 40px;
-      line-height: 100%;
-      letter-spacing: 0%;
+      padding-bottom: 1rem;
+      letter-spacing: 0.15rem;
       margin-bottom: 25px;
     }
 
-    .info {
+    .campos-entrada {
       display: flex;
-      flex-direction: row;
-      font-family: "Montserrat", sans-serif;
-      font-weight: 700;
-      font-size: 20px;
-      line-height: 100%;
-      letter-spacing: 0%;
-      text-align: right;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      margin-bottom: 2rem;
 
-      margin-left: 0px;
-      margin-top: 10px;
-      margin-bottom: 5px;
-    }
+      .info {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 100%;
+        text-align: right;
+        padding-right: 1rem;
+        width: 10%;
+      }
 
-    .input {
-      width: 187px;
-      height: 34px;
-      top: 379px;
-      left: 1039px;
-      border-radius: 5px;
-      border-width: 1px;
+      .input {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        width: 50%;
+        height: 2rem;
+        padding: 0 0.25rem;
+        border-radius: 5px;
+        border-width: 1px;
+        font: 400 1rem "Montserrat";
+      }
     }
 
     .btn-alterar {
-      margin-top: 15px;
       width: 102px;
       height: 33px;
       top: 475px;
@@ -55,20 +60,13 @@
       border-radius: 20px;
       background: #50b4bf;
       color: white;
-
+      cursor: pointer;
       font-family: "Montserrat", sans-serif;
       font-weight: bolder;
       font-size: 16px;
-      line-height: 100%;
-      letter-spacing: 0%;
       text-align: center;
-
       margin-left: 35px;
-    }
-
-    .possui-conta {
-      margin-top: 55px;
-      width: 190px;
+      border: none;
     }
   }
 }

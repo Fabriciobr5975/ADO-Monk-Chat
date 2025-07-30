@@ -31,35 +31,41 @@ export default function Login() {
       <BarraLogo />
 
       <div className="login">
-        <label className="titulo">Faça seu login</label>
+        <h3 className="titulo">Faça seu login</h3>
 
-        <label className="info">Email</label>
+        <div className="campos-entrada">
+          <label className="info">Email</label>
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Insira seu e-mail"
+            className="input"
+          />
+        </div>
 
-        <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="Insira seu e-mail"
-          className="input"
-        />
-
-        <label className="info">Senha</label>
-        <input
-          type="password"
-          value={senha}
-          onChange={(e) => setSenha(e.target.value)}
-          placeholder="Insira seu e-mail"
-          className="input"
-        />
+        <div className="campos-entrada">
+          <label className="info">Senha</label>
+          <input
+            type="password"
+            value={senha}
+            onChange={(e) => setSenha(e.target.value)}
+            placeholder="Insira sua senha"
+            className="input"
+          />
+        </div>
 
         <button className="btn-login" onClick={buscarUsuario}>
           Login
         </button>
 
-        <label className="criar-conta">
-          Não possui uma conta? Crie uma agora clicando{" "}
-          <Link to="/registrar">aqui.</Link>{" "}
-        </label>
+        <div className="criar-conta">
+          <span>Não possui uma conta?</span>
+          <span>
+            Crie uma agora clicando
+            <Link to="/registrar"> aqui.</Link>
+          </span>
+        </div>
       </div>
     </div>
   );

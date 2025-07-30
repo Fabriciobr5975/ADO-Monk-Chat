@@ -63,7 +63,7 @@ endpoint.get("/mensagem", async(req, resp) => {
     }
 });
 
-endpoint.get("/mensagem/:sala", async(req, resp) => {
+endpoint.get("/mensagem/sala/:sala", async(req, resp) => {
     try {
         const sala = req.params.sala;
         const registros = await listarMensagemPorIdSalaService(sala);
