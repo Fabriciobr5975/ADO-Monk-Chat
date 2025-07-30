@@ -19,7 +19,7 @@ Usuário:
 
 > As salas são globais, então todos os usuários podem entrar na sala e enviar mensagens
 
-## Como rodar o projeto 🏎️
+## Como rodar o projeto 🚘
 
 > Para rodar esse projeto você terá que ter o React, o Node e o MySQL instalado
 
